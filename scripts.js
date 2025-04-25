@@ -142,22 +142,24 @@ function loadData() {
 }
 
 function autoLoadData() {
-    bani = parseInt(localStorage.getItem("baniSalvati") || 0);
-    moneygain = parseInt(localStorage.getItem("moneygain") || 1);
-    upgrades = parseInt(localStorage.getItem("clickUpgrades") || 0);
-    cost = parseInt(localStorage.getItem("clickCost") || 10);
-    passiveCost = parseInt(localStorage.getItem("passivecost")||10);
-    passiveGeneration = parseInt(localStorage.getItem("passiveGen")||1);
-    passiveUpgrades = parseInt(localStorage.getItem("passiveUpg")||0);
-    tip = parseInt(localStorage.getItem("tipshow")||0);
+    if (savedOnce == 1) {
+        bani = parseInt(localStorage.getItem("baniSalvati") || 0);
+        moneygain = parseInt(localStorage.getItem("moneygain") || 1);
+        upgrades = parseInt(localStorage.getItem("clickUpgrades") || 0);
+        cost = parseInt(localStorage.getItem("clickCost") || 10);
+        passiveCost = parseInt(localStorage.getItem("passivecost") || 10);
+        passiveGeneration = parseInt(localStorage.getItem("passiveGen") || 1);
+        passiveUpgrades = parseInt(localStorage.getItem("passiveUpg") || 0);
+        tip = parseInt(localStorage.getItem("tipshow") || 0);
 
-    document.getElementById("upgs").textContent = "Upgrades: " + upgrades;
-    document.getElementById("cost").textContent = "Cost: " + cost;
-    document.getElementById("money").textContent = "Oxigen: " + bani;
-    document.getElementById("perClick").textContent = "+" + moneygain + " on click";
-    document.getElementById("upgsPassive").textContent = "Upgrade: " + passiveUpgrades;
-    document.getElementById("costPassive").textContent = "Cost: " + passiveCost;
-    document.getElementById("freeMoney").textContent = "Oxigen/s: " + passiveGeneration;
+        document.getElementById("upgs").textContent = "Upgrades: " + upgrades;
+        document.getElementById("cost").textContent = "Cost: " + cost;
+        document.getElementById("money").textContent = "Oxigen: " + bani;
+        document.getElementById("perClick").textContent = "+" + moneygain + " on click";
+        document.getElementById("upgsPassive").textContent = "Upgrade: " + passiveUpgrades;
+        document.getElementById("costPassive").textContent = "Cost: " + passiveCost;
+        document.getElementById("freeMoney").textContent = "Oxigen/s: " + passiveGeneration;
+    }
 }
 function autoSave() { 
     savedOnce = 1;
