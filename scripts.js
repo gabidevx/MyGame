@@ -16,16 +16,16 @@ function addMoney() {
         tip = 1;
     }
 
-    money.style.transform = "scale(1.2)";
-    money.style.transition = "transform 0.15s ease";
+    document.getElementById("money").style.transform = "scale(1.2)";
+    document.getElementById("money").style.transition = "transform 0.15s ease";
     setTimeout(() => {
-        money.style.transform = "scale(1)";
+        document.getElementById("money").style.transform = "scale(1)";
     }, 200);
 
-    clickImage.style.transform = "scale(1)";
-    clickImage.style.transition = "transform 0.15s ease";
+    document.getElementById("clickImage").style.transform = "scale(1)";
+    document.getElementById("clickImage").style.transition = "transform 0.15s ease";
     setTimeout(() => {
-        clickImage.style.transform = "scale(0.9)";
+        document.getElementById("clickImage").style.transform = "scale(0.9)";
     }, 200);
 }
 
@@ -44,19 +44,19 @@ function upgradeClick() {
 
         document.getElementById("money").textContent = "Oxigen: " + bani;
 
-        money.style.transform = "scale(1.2)";
-        money.style.transition = "transform 0.15s ease";
+        document.getElementById("money").style.transform = "scale(1.2)";
+        document.getElementById("money").style.transition = "transform 0.15s ease";
         setTimeout(() => {
-            money.style.transform = "scale(1)";
+            document.getElementById("money").style.transform = "scale(1)";
         }, 200);
 
         document.getElementById("upgs").textContent = "Upgrade: " + upgrades;
         document.getElementById("cost").textContent = "Cost: " + cost;
         document.getElementById("perClick").textContent = "+" + moneygain + " on click";
-        perClick.style.transform = "scale(1.2)";
-        perClick.style.transition = "transform 0.15s ease";
+        document.getElementById("perClick").style.transform = "scale(1.2)";
+        document.getElementById("perClick").style.transition = "transform 0.15s ease";
         setTimeout(() => {
-            perClick.style.transform = "scale(1)";
+            document.getElementById("perClick").style.transform = "scale(1)";
         }, 200);
 
     }
@@ -75,17 +75,17 @@ function upgradePassive() {
 
         if (tip == 1) {
             tip = 2;
-            tips.style.display = "none";
+            document.getElementById("tips").style.display = "none";
         }
 
         document.getElementById("upgsPassive").textContent = "Upgrade: " + passiveUpgrades;
         document.getElementById("costPassive").textContent = "Cost: " + passiveCost;
         document.getElementById("freeMoney").textContent = "Oxigen/s: " + passiveGeneration;
 
-        freeMoney.style.transform = "scale(1.2)";
-        freeMoney.style.transition = "transform 0.15s ease";
+        document.getElementById("freeMoney").style.transform = "scale(1.2)";
+        document.getElementById("freeMoney").style.transition = "transform 0.15s ease";
         setTimeout(() => {
-            freeMoney.style.transform = "scale(1)";
+            document.getElementById("freeMoney").style.transform = "scale(1)";
         }, 200);
 
     }
@@ -120,14 +120,14 @@ function loadData() {
         alert("Nu exista data salvata!");
     }
     else {
-        bani = parseInt(localStorage.getItem("baniSalvati"));
-        moneygain = parseInt(localStorage.getItem("moneygain"));
-        upgrades = parseInt(localStorage.getItem("clickUpgrades"));
-        cost = parseInt(localStorage.getItem("clickCost"));
-        passiveCost = parseInt(localStorage.getItem("passivecost"));
-        passiveGeneration = parseInt(localStorage.getItem("passiveGen"));
-        passiveUpgrades = parseInt(localStorage.getItem("passiveUpg"));
-        tip = parseInt(localStorage.getItem("tipshow"));
+        bani = parseInt(localStorage.getItem("baniSalvati") || 0);
+        moneygain = parseInt(localStorage.getItem("moneygain") || 1);
+        upgrades = parseInt(localStorage.getItem("clickUpgrades") || 0);
+        cost = parseInt(localStorage.getItem("clickCost") || 10);
+        passiveCost = parseInt(localStorage.getItem("passivecost") || 10);
+        passiveGeneration = parseInt(localStorage.getItem("passiveGen") || 1);
+        passiveUpgrades = parseInt(localStorage.getItem("passiveUpg") || 0);
+        tip = parseInt(localStorage.getItem("tipshow") || 0);
 
         document.getElementById("upgs").textContent = "Upgrades: " + upgrades;
         document.getElementById("cost").textContent = "Cost: " + cost;
@@ -142,14 +142,14 @@ function loadData() {
 }
 
 function autoLoadData() {
-    bani = parseInt(localStorage.getItem("baniSalvati"));
-    moneygain = parseInt(localStorage.getItem("moneygain"));
-    upgrades = parseInt(localStorage.getItem("clickUpgrades"));
-    cost = parseInt(localStorage.getItem("clickCost"));
-    passiveCost = parseInt(localStorage.getItem("passivecost"));
-    passiveGeneration = parseInt(localStorage.getItem("passiveGen"));
-    passiveUpgrades = parseInt(localStorage.getItem("passiveUpg"));
-    tip = parseInt(localStorage.getItem("tipshow"));
+    bani = parseInt(localStorage.getItem("baniSalvati") || 0);
+    moneygain = parseInt(localStorage.getItem("moneygain") || 1);
+    upgrades = parseInt(localStorage.getItem("clickUpgrades") || 0);
+    cost = parseInt(localStorage.getItem("clickCost") || 10);
+    passiveCost = parseInt(localStorage.getItem("passivecost")||10);
+    passiveGeneration = parseInt(localStorage.getItem("passiveGen")||1);
+    passiveUpgrades = parseInt(localStorage.getItem("passiveUpg")||0);
+    tip = parseInt(localStorage.getItem("tipshow")||0);
 
     document.getElementById("upgs").textContent = "Upgrades: " + upgrades;
     document.getElementById("cost").textContent = "Cost: " + cost;
@@ -201,7 +201,7 @@ function resetData() {
     document.getElementById("upgsPassive").textContent = "Upgrade: " + passiveUpgrades;
     document.getElementById("costPassive").textContent = "Cost: " + passiveCost;
     document.getElementById("freeMoney").textContent = "Oxigen/s: " + passiveGeneration;
-    tips.style.display = "block";
+    document.getElementById("tips").style.display = "block";
     document.getElementById("tips").textContent = "Tip: apasa pe copac";
 
     alert("Totul a fost resetat.")
@@ -209,24 +209,24 @@ function resetData() {
 function passiveGen() {
     bani = bani + passiveGeneration;
     document.getElementById("money").textContent = "Oxigen: " + bani;
-    money.style.transform = "scale(1.2)";
-    money.style.transition = "transform 0.15s ease";
+    document.getElementById("money").style.transform = "scale(1.2)";
+    document.getElementById("money").style.transition = "transform 0.15s ease";
     setTimeout(() => {
-        money.style.transform = "scale(1)";
+        document.getElementById("money").style.transform = "scale(1)";
     }, 200);
 }
 
 window.onload = () => {
-    savedOnce = parseInt(localStorage.getItem("savedAtLeastOnce"));
+    savedOnce = parseInt(localStorage.getItem("savedAtLeastOnce") || 0);
     autoLoadData();
     if (tip == 0) {
-        tips.textContent = "Tip: apasa pe copac";
+        document.getElementById("tips").textContent = "Tip: apasa pe copac";
     }
     if (tip == 1) {
-        tips.textContent = "Tip: cumpara un upgrade";
+        document.getElementById("tips").textContent = "Tip: cumpara un upgrade";
     }
     if (tip == 2) {
-        tips.style.display = "none";
+        document.getElementById("tips").style.display = "none";
     }
     setInterval(passiveGen, 1000); //1s
     setInterval(autoSave, 1000); //1s
