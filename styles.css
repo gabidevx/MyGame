@@ -52,7 +52,7 @@ li a:hover {
     animation: animatieGradient 3.5s infinite;
 }
 
-#money, #upgbutton1, #upgbutton2, #perClick, #freeMoney, #stat {
+#money, #upgbutton1, #upgbutton2, #perClick, #freeMoney, #stat, #rebirths, #rebirthButton {
     color: white;
     font-size: 150%;
     padding: 5px;
@@ -61,19 +61,19 @@ li a:hover {
     background-size: 500%, 500%;
     border-radius: 20px;
     animation: animatieGradient 3.5s infinite;
-    border:2px solid black;
+    border: 2px solid black;
 }
 
 
-#money:hover, #upgbutton1:hover, #upgbutton2:hover, #perClick:hover, #freeMoney:hover, #stat:hover {
-    transform: scale(1.2);
-    transition: transform 0.15s ease;
-}
+    #money:hover, #upgbutton1:hover, #upgbutton2:hover, #perClick:hover, #freeMoney:hover, #stat:hover, #rebirths:hover, #rebirthButton:hover {
+        transform: scale(1.2);
+        transition: transform 0.15s ease;
+    }
 
 #saveData,#loadData,#resetData {
     color: white;
     font-size: 150%;
-    padding: 5px;
+    padding: 5px;   
     display: inline-table;
     background: linear-gradient(45deg,blue, blue, blue, blue,purple, red,purple, blue, blue, blue,blue);
     background-size: 500%, 500%;
@@ -89,10 +89,26 @@ li a:hover {
 
 #tips {
     color: white;
-    background-image: radial-gradient(black,black,black,black, black, gold,black, black,black,black,black);
-    font-size:150%;
-    animation: animatieGradient 3.5s infinite;
+    background-image: radial-gradient(green,black,green,black,green,black,green,black,green,black,green,black,green,black);
+    font-size: 150%;
+    animation: animatieGradient 10s infinite;
     background-size: 500% 500%;
     border-radius: 20px;
-    padding: 2px;
+    padding: 7px;
+    border: 2px solid black;
+}
+
+#tips:hover{
+    padding:15px;
+    transition: padding 0.15s ease;
+}
+
+#pozitieUpgrades {
+    float:right;
+}
+
+@media (max-width:768px){ /*pt telefon*/
+    #pozitieUpgrades{
+        float:left;
+    }
 }
