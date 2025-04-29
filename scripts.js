@@ -10,7 +10,7 @@ let tip = 0;
 
 let rebirths = 0;
 let rebirthCost = 1000;
-function addMoney() {
+function addMoney() { // venit per click
     bani = bani + moneygain;
     document.getElementById("money").textContent = "Oxigen: " + bani;
 
@@ -41,7 +41,7 @@ function addMoney() {
     }, 200);
 }
 
-function upgradeClick() {
+function upgradeClick() { // upgrade pentru click
     if (bani >= cost) {
         moneygain = moneygain + (rebirths+1);
         bani = bani - cost;
@@ -85,7 +85,7 @@ function upgradeClick() {
         alert("You are missing money " + missing + " oxigen!");
     }
 }
-function passiveGen() {
+function passiveGen() { // venit pasiv
     bani = bani + passiveGeneration;
     document.getElementById("money").textContent = "Oxigen: " + bani;
     document.getElementById("money").style.transform = "scale(1.2)";
@@ -94,7 +94,7 @@ function passiveGen() {
         document.getElementById("money").style.transform = "scale(1)";
     }, 200);
 }
-function upgradePassive() {
+function upgradePassive() { // upgrade venit pasiv
     if (bani >= passiveCost) {
         bani -= passiveCost;
         passiveUpgrades++;
@@ -197,7 +197,7 @@ function rebirth()
     }
 }
 
-function saveData() {
+function saveData() { // funtie pentru butonul de salavare a datei
 
     if (savedOnce == 0) {
         alert("Data a fost salvata");
@@ -219,7 +219,7 @@ function saveData() {
     localStorage.setItem("rebirths", rebirths);
     localStorage.setItem("rebirthCost", rebirthCost);
 }
-function loadData() {
+function loadData() { // funtie pentru butonul de load data
     if (savedOnce == 0) {
         alert("Nu exista data salvata!");
     }
@@ -254,7 +254,7 @@ function loadData() {
     }
 }
 
-function autoLoadData() {
+function autoLoadData() { // auto load-data
     if (savedOnce == 1) {
         bani = parseInt(localStorage.getItem("baniSalvati") || 0);
         moneygain = parseInt(localStorage.getItem("moneygain") || 1);
@@ -283,7 +283,7 @@ function autoLoadData() {
         }
     }
 }
-function autoSave() { 
+function autoSave() {  // autosalvare
     savedOnce = 1;
     localStorage.setItem("baniSalvati", bani);
     localStorage.setItem("moneygain", moneygain);
@@ -298,7 +298,7 @@ function autoSave() {
     localStorage.setItem("rebirthCost", rebirthCost);
 }
 
-function resetData() {
+function resetData() { // functie pentru resetarea datelor
     bani = 0;
     moneygain = 1;
     upgrades = 0;
@@ -338,7 +338,21 @@ function resetData() {
     alert("Totul a fost resetat.")
 }
 
-window.onload = () => {
+function cheatMoney() { // functie de a adauga bani
+    let introdus = prompt("Adauga bani (intre 1 si 100.000.000)");
+    numar = parseInt(introdus);
+    if (isNaN(numar) || numar < 1 || numar > 100000000) {
+        alert("Introdu un numar valid intre 1 si 100.000.000!");
+        return;
+    }
+    else {
+        bani += numar;
+        localStorage.setItem("money", bani);
+        document.getElementById("money").textContent = "Oxigen: " + bani;
+    }
+}
+
+window.onload = () => { //  ce se intampla cand se loadeaza pagina
     savedOnce = parseInt(localStorage.getItem("savedAtLeastOnce") || 0);
     autoLoadData();
     if (tip == 0) {
